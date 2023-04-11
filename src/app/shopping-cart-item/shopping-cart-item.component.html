@@ -1,0 +1,110 @@
+<div class="shopping-cart-item">
+
+  <!-- <img class="article-image" [src]="article.image" [alt]="article.descripcion"> -->
+
+  <!-- <div class="article-name">{{ article.descripcion }}</div>
+
+  <div class="article-count">{{ count }}</div> -->
+
+  <label>Inicie lectura de productos</label>
+
+
+  <ng-container *ngIf="Crear">
+
+    <div class="container-fluid">
+      <div row>
+        <div class="col-md-12 mt-5">
+          <form [formGroup]="contacto" (ngSubmit)="onSubmit()">
+
+            <div class="form-group">
+              <label>Descripción</label>
+              <input type="text" formControlName="descripcion" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.descripcion.errors }" />
+              <div *ngIf="submitted && f.descripcion.errors" class="invalid-feedback">
+                  <div *ngIf="f.descripcion.errors.required">Debe ingresar descripción</div>
+              </div>
+          </div>
+          <div class="form-group">
+              <label>Cantidad</label>
+              <input type="text" formControlName="cantidad" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.cantidad.errors }" />
+              <div *ngIf="submitted && f.cantidad.errors" class="invalid-feedback">
+                  <div *ngIf="f.cantidad.errors.required">Cantidad es obligatorio</div>
+                  <div *ngIf="f.cantidad.errors.cantidad">Por favor, ingresa cantidad</div>
+              </div>
+          </div>
+          <div class="form-group">
+              <label>Categoría</label>
+              <input type="text" formControlName="item" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.item.errors }" />
+              <div *ngIf="submitted && f.item.errors" class="invalid-feedback">
+                  <div *ngIf="f.item.errors.required">Por favor, ingresa el item</div>
+              </div>
+          </div>
+
+          <div class="form-group">
+            <label>PRecio venta</label>
+            <input type="text" formControlName="precio_venta" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.precio_venta.errors }" />
+            <div *ngIf="submitted && f.precio_venta.errors" class="invalid-feedback">
+                <div *ngIf="f.precio_venta.errors.required">Por favor, ingresa el precio de venta</div>
+            </div>
+        </div>
+
+          </form>
+        </div>
+
+
+      </div>
+    </div>
+
+  </ng-container>
+
+  <ng-container *ngIf="Editar">
+
+    <div class="container-fluid">
+      <div row>
+        <div class="col-md-12 mt-5">
+          <form [formGroup]="contacto" (ngSubmit)="onSubmit()">
+
+            <div class="form-group">
+              <label>Descripción</label>
+              <input type="text" formControlName="descripcion" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.descripcion.errors }" />
+              <div *ngIf="submitted && f.descripcion.errors" class="invalid-feedback">
+                  <div *ngIf="f.descripcion.errors.required">Debe ingresar descripción</div>
+              </div>
+          </div>
+          <div class="form-group">
+              <label>Cantidad</label>
+              <input type="text" formControlName="cantidad" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.cantidad.errors }" />
+              <div *ngIf="submitted && f.cantidad.errors" class="invalid-feedback">
+                  <div *ngIf="f.cantidad.errors.required">Cantidad es obligatorio</div>
+                  <div *ngIf="f.cantidad.errors.cantidad">Por favor, ingresa cantidad</div>
+              </div>
+          </div>
+          <div class="form-group">
+              <label>Categoría</label>
+              <input type="text" formControlName="item" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.item.errors }" />
+              <div *ngIf="submitted && f.item.errors" class="invalid-feedback">
+                  <div *ngIf="f.item.errors.required">Por favor, ingresa el item</div>
+              </div>
+          </div>
+
+          <div class="form-group">
+            <label>Precio venta</label>
+            <input type="text" formControlName="precio_venta" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.precio_venta.errors }" />
+            <div *ngIf="submitted && f.precio_venta.errors" class="invalid-feedback">
+                <div *ngIf="f.precio_venta.errors.required">Por favor, ingresa el precio de venta</div>
+            </div>
+        </div>
+
+        <div class="form-group">
+          <button class="btn btn-primary" type="submit">{{ButtonText}}</button>
+      </div>
+
+          </form>
+        </div>
+
+
+      </div>
+    </div>
+
+  </ng-container>
+
+</div>

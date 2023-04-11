@@ -1,0 +1,128 @@
+<div class="shopping-cart">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12 mt-20">
+
+        <ng-container *ngIf="Crear">
+          <div class="container-fluid">
+            <div row>
+              <div class="col-md-12 mt-5">
+                <h2>Registrar nuevo producto</h2>
+                <hr>
+                <br>
+                <form [formGroup]="contacto">
+
+                  <div class="form-group">
+                    <label>Código</label>
+                    <input #focusTrg type="number" formControlName="codigo" pattern="\d*"
+                    (blur)="GetData($event.target.value)"
+                    (keyup.enter)="GetData($event.target.value)"
+                    class="form-control"
+                    [ngClass]="{ 'is-invalid': submitted && f.codigo.errors }"
+                    maxlength="18"/>
+                    <div *ngIf="submitted && f.codigo.errors" class="invalid-feedback">
+                        <div *ngIf="f.codigo.errors.required">Debe ingresar Código</div>
+                    </div>
+                  </div>
+
+                  <div class="form-group">
+                    <label>Descripción</label>
+                    <input type="text" formControlName="descripcion" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.descripcion.errors }" />
+                    <div *ngIf="submitted && f.descripcion.errors" class="invalid-feedback">
+                        <div *ngIf="f.descripcion.errors.required">Debe ingresar descripción</div>
+                    </div>
+                  </div>
+
+                  <div class="form-group">
+                    <label>Cantidad</label>
+                    <input type="number" formControlName="cantidad" pattern="\d*" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.cantidad.errors }" maxlength="6" />
+                    <div *ngIf="submitted && f.cantidad.errors" class="invalid-feedback">
+                        <div *ngIf="f.cantidad.errors.required">Cantidad es obligatorio</div>
+                        <div *ngIf="f.cantidad.errors.cantidad">Por favor, ingresa cantidad</div>
+                    </div>
+                  </div>
+
+                  <div class="form-group">
+                  <label>Precio venta</label>
+                  <input type="number" formControlName="precio_venta" pattern="\d*" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.precio_venta.errors }" maxlength="6" />
+                  <div *ngIf="submitted && f.precio_venta.errors" class="invalid-feedback">
+                      <div *ngIf="f.precio_venta.errors.required">Por favor, ingresa el precio de venta</div>
+                  </div>
+                  </div>
+
+                  <div class="form-group">
+                    <button class="btn btn-success col-md-12" type="button" (click)="onSubmitCreate()">Crear</button>
+                  </div>
+
+                </form>
+              </div>
+            </div>
+          </div>
+        </ng-container>
+
+        <ng-container *ngIf="Editar">
+
+          <div class="error-message" *ngIf="errorMessage">
+            {{ errorMessage }}
+          </div>
+
+          <!-- <div id="interactive" class="viewport"> -->
+            <!-- QuaggaJS will populate this element -->
+          <!-- </div> -->
+
+          <div class="container-fluid">
+            <div class="row">
+              <br>
+              <h2 >Actualizar producto</h2>
+              <hr>
+
+              <div class="col-md-12 mt-5">
+                <form [formGroup]="contacto" >
+
+                  <div class="form-group">
+                    <label>Descripción</label>
+                    <input type="text" formControlName="descripcion" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.descripcion.errors }" />
+                    <div *ngIf="submitted && f.descripcion.errors" class="invalid-feedback">
+                        <div *ngIf="f.descripcion.errors.required">Debe ingresar descripción</div>
+                    </div>
+                  </div>
+
+                  <div class="form-group">
+                    <label>Cantidad</label>
+                    <input type="number" formControlName="cantidad" pattern="\d*" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.cantidad.errors }" maxlength="4" />
+                    <div *ngIf="submitted && f.cantidad.errors" class="invalid-feedback">
+                        <div *ngIf="f.cantidad.errors.required">Cantidad es obligatorio</div>
+                        <div *ngIf="f.cantidad.errors.cantidad">Por favor, ingresa cantidad</div>
+                    </div>
+                  </div>
+
+                  <div class="form-group">
+                    <label>Precio venta</label>
+                    <input type="number" formControlName="precio_venta" pattern="\d*" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.precio_venta.errors }" maxlength="6" />
+                    <div *ngIf="submitted && f.precio_venta.errors" class="invalid-feedback">
+                      <div *ngIf="f.precio_venta.errors.required">Por favor, ingresa el precio de venta</div>
+                    </div>
+                  </div>
+
+                  <div class="form-row">
+                    <div class="col-md-6">
+                      <button class="btn btn-primary col-md-6" type="button" (click)="onSubmit()">Actualizar</button>
+                    </div>
+                    <br>
+                    <br>
+
+                    <div class="col-md-6">
+                      <button class="btn btn-warning col-md-6" type="button" (click)="regresar()">Volver</button>
+                    </div>
+                  </div>
+
+                </form>
+              </div>
+            </div>
+          </div>
+        </ng-container>
+
+      </div>
+    </div>
+  </div>
+</div>
